@@ -25,9 +25,9 @@ class FotoHeader extends Component {
               <figure className="foto-usuario">
                <img src={foto.urlPerfil} alt="foto do usuario"/>
                 <figcaption className="foto-usuario">
-                <Link to={`/timeline?${this.props.foto.loginUsuario}`}>
+                  <Link to={`/timeline/${this.props.foto.loginUsuario}`}>
                     {this.props.foto.loginUsuario}
-                    </Link>
+                  </Link>
                 </figcaption>
               </figure>
               <time className="foto-data">{foto.horario}</time>
@@ -44,7 +44,7 @@ class FotoInfo extends Component{
         <div className="foto-info-likes">
           {
             foto.likers.map(liker => {
-              return <a href="#">{liker.login},</a>
+              return (<Link key={liker.login} href={`/timeline/${liker.login}`}>{liker.login}</Link>)
             })
           }
           curtiram
