@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router';
+
 
 class FotoAtualizacoes extends Component {
     render(){
@@ -23,9 +25,9 @@ class FotoHeader extends Component {
               <figure className="foto-usuario">
                <img src={foto.urlPerfil} alt="foto do usuario"/>
                 <figcaption className="foto-usuario">
-                  <a href="#">
-                    {foto.loginUsuario}
-                  </a>  
+                <Link to={`/timeline?${this.props.foto.loginUsuario}`}>
+                    {this.props.foto.loginUsuario}
+                    </Link>
                 </figcaption>
               </figure>
               <time className="foto-data">{foto.horario}</time>
@@ -56,8 +58,8 @@ class FotoInfo extends Component{
           foto.comentarios.map(comentario => {
             return (
               <li className="comentario">
-                <a className="foto-info-autor">{comentario.login}</a>
-                  {comentario.texto}
+                <Link to={`/timeline/${comentario.login} `} className="foto-info-autor">{comentario.login} </Link>
+                {comentario.texto}
               </li>
             );
           })
