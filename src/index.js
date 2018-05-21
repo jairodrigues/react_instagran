@@ -12,7 +12,6 @@ import {matchPattern} from 'react-router/lib/PatternUtils';
 function verificaAutenticacao(nextState,replace) {
   const resultado = matchPattern('/timeline(/:login)',nextState.location.pathname);
   const enderecoPrivadoTimeline = resultado.paramValues[0] === undefined;
-  console.log(resultado);
   if(enderecoPrivadoTimeline && localStorage.getItem('auth-token') === null){
     replace('/?msg=você precisa estar logado para acessar o endereço');
   }
